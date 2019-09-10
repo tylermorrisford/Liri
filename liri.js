@@ -7,3 +7,9 @@ var fs = require("fs");
 
 // use a switch statement to take in command = process.argv[2]
 // and jump to that command using process.argv[3] as an argument
+
+// switch statement cases:
+// -concert-this   for Bands In Town api (uses moment to render concert dates)
+// -spotify-this-song
+// -movie-this      for OMDB
+// -do-what-it-says 
