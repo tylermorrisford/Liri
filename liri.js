@@ -32,19 +32,25 @@ switch ( command ) {
       break;
     
     case "spotify-this-song":
-      // code block
+              console.log("not built yet")
+    // code block
       break;
 
     case "concert-this":
-        axios.get("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy").then(
+        axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
             function(response) {
-              console.log("The movie's rating is: " + response.data.imdbRating);
+              console.log("\r\n\r\n");
+              console.log("Next show featuring " + response.data[0].lineup + ":");
+              console.log("Date: " + response.data[0].datetime);
+              console.log("Venue name: " + response.data[0].venue.name);
+              console.log("Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
+              console.log("\r\n");
             })
             .catch(function(error) {
                 console.log(error.response.data);
               })
       break;
-      
+
     case "do-what-it-says":
       // read the random.txt file .split(",") and read as process.argv[2] and process.argv[3]
       break;
