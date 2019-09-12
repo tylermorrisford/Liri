@@ -1,4 +1,4 @@
-console.log("This liri app is going to be badass");
+console.log("Please wait while Liri fetches your data...");
 // initial setup 
 require("dotenv").config();
 var keys = require("./keys.js");
@@ -6,22 +6,20 @@ var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 var fs = require("fs");
 const axios = require('axios');
-
+// ------ variables and switch statement with commands ------ // 
+var nodeArgs = process.argv;
 var command = process.argv[2];
-var input = process.argv[3];
-// var movieName = "";  ----------> this is the example of handling all node args and joining everything above 2
+var input = "";  // ----------> handles all node args and joins everything above [2]
 
-// //Loop through all the words in the node argument
-// //And do a little for-loop magic to handle the inclusion of "+"s
-// for (var i = 2; i < nodeArgs.length; i++) {
+for (var i = 3; i < nodeArgs.length; i++) {
 
-//   if (i > 2 && i < nodeArgs.length) {
-//     movieName = movieName + "+" + nodeArgs[i];
-//   } else {
-//     movieName += nodeArgs[i];
+  if (i > 3 && i < nodeArgs.length) {
+    input = input + "+" + nodeArgs[i];
+  } else {
+    input += nodeArgs[i];
 
-//   }
-// }
+  }
+}
 
 switch ( command ) {
     case "movie-this":
@@ -77,10 +75,6 @@ switch ( command ) {
     default:
       // code block
   }
-
-
-// use a switch statement to take in command = process.argv[2]
-// and jump to that command using process.argv[3] as an argument
 
 // switch statement cases:
 // - concert-this   for Bands In Town api (uses moment to render concert dates)
