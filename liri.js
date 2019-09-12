@@ -9,7 +9,7 @@ const axios = require('axios');
 // ------ variables and switch statement with commands ------ // 
 var nodeArgs = process.argv;
 var command = process.argv[2];
-var input = "";  // ----------> handles all node args and joins everything above [2]
+var input = "";  // ---> handles all node args and joins everything above [2]
 
 for (var i = 3; i < nodeArgs.length; i++) {
 
@@ -47,9 +47,14 @@ switch ( command ) {
             if (err) {
               return console.log('Error occurred: ' + err);
             }
-           
-          console.log(data.tracks);
-          console.log(data.tracks.items[0].album);
+
+          console.log("\r\n----- " + input + " ------");
+          console.log("\r\n\r\n");
+          console.log("\"" + data.tracks.items[0].name + "\"");
+          console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
+          console.log("Open Spotify & Play (hold 'cmd' + click): " + data.tracks.items[0].album.artists[0].external_urls.spotify);
+          console.log("Album name: " + data.tracks.items[0].album.name);
+          console.log("\r\n\r\n");
           });
       break;
 
