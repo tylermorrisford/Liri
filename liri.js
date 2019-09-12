@@ -60,7 +60,8 @@ switch ( command ) {
             function(response) {
               console.log("\r\n\r\n");
               console.log("Next show featuring " + response.data[0].lineup + ":");
-              console.log("Date: " + response.data[0].datetime);
+            //   response.data[0].datetime moment().format('MMMM Do YYYY, h:mm:ss a');
+              console.log("Date: " + response.data[0].datetime );
               console.log("Venue name: " + response.data[0].venue.name);
               console.log("Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
               console.log("\r\n");
@@ -83,6 +84,6 @@ switch ( command ) {
 
 // switch statement cases:
 // - concert-this   for Bands In Town api (uses moment to render concert dates)
-// - spotify-this-song
+// - spotify-this-song --------------- Kind of sort of working
 // - movie-this      for OMDB   need more tests & input validation, mostly working
 // - do-what-it-says 
