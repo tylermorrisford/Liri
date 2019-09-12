@@ -9,6 +9,19 @@ const axios = require('axios');
 
 var command = process.argv[2];
 var input = process.argv[3];
+// var movieName = "";  ----------> this is the example of handling all node args and joining everything above 2
+
+// //Loop through all the words in the node argument
+// //And do a little for-loop magic to handle the inclusion of "+"s
+// for (var i = 2; i < nodeArgs.length; i++) {
+
+//   if (i > 2 && i < nodeArgs.length) {
+//     movieName = movieName + "+" + nodeArgs[i];
+//   } else {
+//     movieName += nodeArgs[i];
+
+//   }
+// }
 
 switch ( command ) {
     case "movie-this":
@@ -31,9 +44,15 @@ switch ( command ) {
               })
       break;
     
-    case "spotify-this-song":
-              console.log("not built yet")
-    // code block
+    case "spotify-this-song": // may need JSON.parse();
+        spotify.search({ type: 'track', query: input, limit: 1 }, function(err, data) {
+            if (err) {
+              return console.log('Error occurred: ' + err);
+            }
+           
+          console.log(data.tracks);
+          console.log(data.tracks.items[0].album);
+          });
       break;
 
     case "concert-this":
@@ -49,7 +68,7 @@ switch ( command ) {
             .catch(function(error) {
                 console.log(error.response.data);
               })
-      break;
+      break; 
 
     case "do-what-it-says":
       // read the random.txt file .split(",") and read as process.argv[2] and process.argv[3]
