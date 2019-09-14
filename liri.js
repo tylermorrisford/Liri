@@ -24,7 +24,7 @@ switch ( command ) {
     case "movie-this":
         axios.get("http://www.omdbapi.com/?t=" + input + "&tomatoes=true&apikey=trilogy").then(
             function(response) {
-              console.log("\r\n\r\n\r\n");
+              console.log("\r\n");
               console.log("\"" + response.data.Title 
               + "\"\nRelease year: " + response.data.Year 
               + "\nIMDB Rating: " + response.data.Ratings[0].Value
@@ -46,7 +46,6 @@ switch ( command ) {
             if (err) {
               return console.log('Error occurred: ' + err);
             }
-
           console.log("\r\n----- " + input + " ------");
           console.log("\r\n\r\n");
           console.log("\"" + data.tracks.items[0].name + "\"");
@@ -74,13 +73,13 @@ switch ( command ) {
       break; 
 
     case "do-what-it-says":
-      // read the random.txt file .split(",") and read as process.argv[2] and process.argv[3]
+      // read the random.txt file .split(",") and read as command and input
       fs.readFile('./random.txt', (err, data) => {
         if (err) throw err;
         var randomText = data.toString().split(",");
         input = randomText[1].replace(/['"]+/g, '')
         command = randomText[0];
-        // this ain't dry
+        // this ain't dry, but...
         if ( command === 'movie-this') {
             axios.get("http://www.omdbapi.com/?t=" + input + "&tomatoes=true&apikey=trilogy").then(
             function(response) {
@@ -144,11 +143,13 @@ switch ( command ) {
           console.log("Album name: " + data.tracks.items[0].album.name);
           console.log("\r\n\r\n");
           });
+
   }
-
-// switch statement cases:
-// - do-what-it-says 
-
+ var timeStamp = moment().format('MMMM Do YYYY, h:mm:ss a');
+  fs.appendFile('log.txt', "\n" + command + ": " + input + " @ " + timeStamp, (err) => {
+    if (err) throw err;
+    console.log('Appending request to the log');
+  });
 
 // readFile
 // if (command === "do-what-it-says") {
