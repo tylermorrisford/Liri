@@ -25,8 +25,8 @@ switch ( command ) {
         axios.get("http://www.omdbapi.com/?t=" + input + "&tomatoes=true&apikey=trilogy").then(
             function(response) {
               console.log("\r\n");
-              console.log("\"" + response.data.Title 
-              + "\"\nRelease year: " + response.data.Year 
+              console.log('\x1b[31m%s\x1b[0m',"\"" + response.data.Title + "\""); 
+              console.log("Release year: " + response.data.Year 
               + "\nIMDB Rating: " + response.data.Ratings[0].Value
               + "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value
               + "\nCountry: " + response.data.Country
@@ -34,7 +34,7 @@ switch ( command ) {
               + "\nPlot: " + response.data.Plot
               + "\nActors: " + response.data.Actors
               );
-              console.log("\r\n\r\n");
+              console.log("\r\n");
             })
             .catch(function(error) {
                 console.log(error.response.data);
@@ -48,7 +48,7 @@ switch ( command ) {
             }
           console.log("\r\n----- " + input + " ------");
           console.log("\r\n\r\n");
-          console.log("\"" + data.tracks.items[0].name + "\"");
+          console.log('\x1b[32m%s\x1b[0m',"\"" + data.tracks.items[0].name + "\"");
           console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
           console.log("Spotify Link: " + data.tracks.items[0].album.artists[0].external_urls.spotify);
           console.log("Album name: " + data.tracks.items[0].album.name);
@@ -61,7 +61,7 @@ switch ( command ) {
             function(response) {
               console.log("\r\n----- " + input + " ------");
               console.log("\r\n\r\n");
-              console.log("Next show featuring " + response.data[0].lineup + ":");
+              console.log('\x1b[36m%s\x1b[0m',"Next show featuring " + response.data[0].lineup + ":");
               console.log("Date: " + moment(response.data[0].datetime).format('MMMM Do YYYY, h:mm a'));
               console.log("Venue name: " + response.data[0].venue.name);
               console.log("Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
@@ -119,7 +119,7 @@ switch ( command ) {
             function(response) {
               console.log("\r\n----- " + input + " ------");
               console.log("\r\n\r\n");
-              console.log("Next show featuring " + response.data[0].lineup + ":");
+              console.log('\x1b[36m%s\x1b[0m',"Next show featuring " + response.data[0].lineup + ":");
               console.log("Date: " + moment(response.data[0].datetime).format('MMMM Do YYYY, h:mm a'));
               console.log("Venue name: " + response.data[0].venue.name);
               console.log("Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
@@ -150,13 +150,3 @@ switch ( command ) {
     if (err) throw err;
     console.log('Appending request to the log');
   });
-
-// readFile
-// if (command === "do-what-it-says") {
-//     fs.readFile('./random.txt', (err, data) => {
-//         if (err) throw err;
-//         var randomText = data.toString().split(",");
-//         command = randomText[0];
-//         input = randomText[1].replace(/['"]+/g, '');
-//       });
-// }
