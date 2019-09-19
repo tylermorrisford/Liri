@@ -12,7 +12,13 @@ Liri is a simple node CLI app that uses API requests to Spotify, OMDB, and Bands
 Liri uses two commands to make requests to one of three APIs, then once the response is returned, pulls relevant information from the JSON response.
 
 # Instructions
-Use node to run the liri.js app:
+FIRST! You'll need to fork the repo and clone it to your computer; from that directory, you'll need to run 
+```sh
+npm install
+``` 
+to install the packages and dependencies, and you'll need to create an app with spotify in order to use some of the functionality. Head [here](https://developer.spotify.com/documentation/web-api/) to learn more. Once you have a spotify key and a spotify secret(which are supplied once you create your spotify app), save them as the 'keys' variable as shown in the liri.js file. Done? Nice work!
+
+THEN! Use node to run the liri.js app:
 ```sh
 $ node liri
 ```
