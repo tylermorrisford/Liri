@@ -9,7 +9,7 @@ Liri is a simple node CLI app that uses API requests to Spotify, OMDB, and Bands
 3. Built with
 
 # How it works
-Liri uses two commands to make requests to one of three APIs, then once the response is returned, pulls relevant information from the JSON response.
+Liri uses two commands to make requests to one of three APIs, then once the response is returned, pulls relevant information from the JSON response. Future updates will return error messages and utilize inquirer for user input.
 
 # Instructions
 ### setup
